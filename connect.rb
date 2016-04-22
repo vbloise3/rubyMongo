@@ -20,8 +20,12 @@ end
 puts "Users older than 20"
 p $users.find("age" => {"$gt" => 20}).each.to_a
 
+$users.find({"last_name" => "The Dude"}).update_one({"$set" => {"age" => 55}})
+
 puts "Users older than 30 by last name:"
 cursor = $users.find({"age" => {"$gt" => 30}})
 cursor.each do |doc|
     puts doc["last_name"]
 end
+
+
